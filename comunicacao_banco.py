@@ -2,12 +2,27 @@ import pymysql
 
 def criar_conexao():
     return pymysql.connect(
-    host='yamanote.proxy.rlwy.net',
+    host='tramway.proxy.rlwy.net',
     user='root',
-    password='ImDgrtWBmDmisAfAvOFxVrwJsGazWLyi',
-    port=24227,
+    password='UqGjLPfUGrROCWvyeAmICcWNtKCwpgek',
+    port=19958,
     database='railway'
     )
+
+with criar_conexao() as conn:
+    cursor = conn.cursor()
+    sql = '''
+    create table if not exists cervejas(
+        id int primary key auto_increment,
+        descricao varchar(255) not null,
+        estilo varchar(255) not null,
+        codigo varchar(255) not null,
+        valor decimal(10,2) not null,
+        valorCaixa decimal(10,2));
+    '''
+    cursor.execute(sql)
+    conn.commit()
+    cursor.close()
 
 #cursor = conn.cursor()
 #sql_dropar_tabela = 'DROP TABLE cervejas;'

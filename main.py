@@ -25,7 +25,7 @@ if response.status_code == 200:
                 sql = 'INSERT INTO cervejas (descricao, estilo, codigo, valor) VALUES (%s, %s, %s, %s);'
                 dados = (descricao.text.strip(), estilo.text, codigo.text, valor)
             else:
-                sql = 'INSERT INTO cervejas (descricao, estilo, codigo, valor, valor_caixa) VALUES (%s, %s, %s, %s, %s);'
+                sql = 'INSERT INTO cervejas (descricao, estilo, codigo, valor, valorCaixa) VALUES (%s, %s, %s, %s, %s);'
                 valor_caixa = ajustar_valor(valor_caixa.text)
                 dados = (descricao.text.strip(), estilo.text, codigo.text, valor, valor_caixa)
 
@@ -37,3 +37,5 @@ if response.status_code == 200:
 else:
     pass
     #TODO criar lógica para enviar email com aviso de falha
+
+#SelectorGadget
